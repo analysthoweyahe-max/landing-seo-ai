@@ -423,6 +423,7 @@ export function GsapAnimations() {
       };
       const fillMarquee = (track: HTMLElement) => {
         track.removeAttribute("data-marquee-ready");
+        track.style.transform = "translateX(0)";
         const group = document.createElement("div");
         group.className = "marquee-group";
         let guard = 0;
@@ -435,9 +436,10 @@ export function GsapAnimations() {
         const clone = group.cloneNode(true) as HTMLElement;
         clone.setAttribute("aria-hidden", "true");
         track.replaceChildren(group, clone);
-        window.requestAnimationFrame(() => {
+        window.setTimeout(() => {
           track.setAttribute("data-marquee-ready", "true");
-        });
+          track.style.transform = "";
+        }, 700);
       };
       const marquees = Array.from(root.querySelectorAll<HTMLElement>("[data-marquee]"));
       marquees.forEach(fillMarquee);
