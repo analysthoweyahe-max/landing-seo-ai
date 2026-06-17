@@ -14,7 +14,10 @@ export function TestimonialsSection() {
                   >
                     <div className='relative'>
                       <div className='absolute -inset-4 rounded-full bg-primary/15 blur-2xl'></div>
-                      <div className='relative w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-primary overflow-hidden flex items-end justify-center shadow-[0_40px_80px_-30px_rgba(160,205,57,0.6)]'>
+                      <div
+                        id='t-portrait-wrap'
+                        className='testimonial-portrait relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden flex items-end justify-center shadow-[0_40px_80px_-30px_rgba(160,205,57,0.6)]'
+                      >
                         <svg
                           id='t-portrait'
                           viewBox='0 0 200 200'
@@ -40,6 +43,18 @@ export function TestimonialsSection() {
                               opacity='0.92'
                             />
                           </g>
+                          <text
+                            id='t-portrait-initial'
+                            x='100'
+                            y='92'
+                            textAnchor='middle'
+                            dominantBaseline='middle'
+                            fill='#5c7a20'
+                            fontSize='46'
+                            fontWeight='900'
+                          >
+                            س
+                          </text>
                         </svg>
                       </div>
                     </div>
@@ -55,7 +70,7 @@ export function TestimonialsSection() {
                     </svg>
     
                     <div id='t-track'>
-                      <div className='t-slide active'>
+                      <div className='t-slide active' data-portrait-initial='س' data-portrait-color='#a0cd39'>
                         <p className='text-2xl sm:text-[1.7rem] font-bold text-ink leading-[1.6]'>
                           وفّرت علينا هويّة ساعات من العمل اليدوي. ترتيب متجرنا على
                           جوجل تحسّن بشكل ملحوظ خلال أسابيع، والاقتراحات دقيقة
@@ -74,7 +89,7 @@ export function TestimonialsSection() {
                         </div>
                       </div>
     
-                      <div className='t-slide'>
+                      <div className='t-slide' data-portrait-initial='ت' data-portrait-color='#8ab72e'>
                         <p className='text-2xl sm:text-[1.7rem] font-bold text-ink leading-[1.6]'>
                           أخيراً أداة SEO أفهمها بالعربية وأثق بها. المراجعة قبل
                           التطبيق ميزة رائعة — نبقى متحكمين بكل تغيير على الموقع.
@@ -94,7 +109,7 @@ export function TestimonialsSection() {
                         </div>
                       </div>
     
-                      <div className='t-slide'>
+                      <div className='t-slide' data-portrait-initial='ب' data-portrait-color='#bedc6f'>
                         <p className='text-2xl sm:text-[1.7rem] font-bold text-ink leading-[1.6]'>
                           المراقبة المستمرة وكشف صفحات 404 أنقذتنا أكثر من مرة.
                           تقاريرنا أصبحت أوضح، وزياراتنا العضوية في ارتفاع مستمر.

@@ -1,0 +1,16 @@
+{
+  "navbar": {
+    "about": "About",
+    "usecases": "Use cases",
+    "stats": "Stats",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "faq": "FAQ",
+    "cta": "Start now",
+    "languageToggle": "العربية",
+    "menu": "Menu"
+  },
+  "hero": {
+    "watch": "Watch how it works"
+  }
+}

@@ -57,7 +57,7 @@ No dependency changes were made.
 - `@gsap/react` is not installed and no usage was found.
 - `next-themes` is installed, but no app-level `ThemeProvider` was found.
 - `date-fns` appears unused in scanned source.
-- `package-lock.json` and `pnpm-lock.yaml` both exist.
+- `package-lock.json` and `` both exist.
 
 ## Scripts And Commands
 

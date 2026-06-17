@@ -8,7 +8,7 @@ Confirmed stack: Next.js `16.2.2`, React `19.2.4`, TypeScript `5.9.3`, Tailwind 
 
 HIGH RISK: The migrated landing page is currently embedded directly in `app/page.tsx` and adds landing-specific global CSS to `app/globals.css`. This works against the emerging company structure where shared UI belongs in `components/ui`, feature code belongs in `features/*`, and routes stay thin.
 
-NEEDS VERIFICATION: The repository has both `package-lock.json` and `pnpm-lock.yaml`. `package.json` does not declare `packageManager`, so npm appears to be the active manager because `npm ls` succeeded against `package-lock.json`, but the intended company package manager should be confirmed.
+NEEDS VERIFICATION: The repository has both `package-lock.json` and ``. `package.json` does not declare `packageManager`, so npm appears to be the active manager because `npm ls` succeeded against `package-lock.json`, but the intended company package manager should be confirmed.
 
 ## Current Stack
 
@@ -26,7 +26,7 @@ NEEDS VERIFICATION: The repository has both `package-lock.json` and `pnpm-lock.y
 | Router | App Router | `app/layout.tsx`, `app/page.tsx` |
 | Source directory | No `src/`; root-level `app/` | repository tree |
 | Workspace | No workspace config found | root configs |
-| Package manager | npm likely; pnpm also present | `package-lock.json`, `pnpm-lock.yaml` |
+| Package manager | npm likely; pnpm also present | `package-lock.json`, `` |
 
 ## Scripts
 

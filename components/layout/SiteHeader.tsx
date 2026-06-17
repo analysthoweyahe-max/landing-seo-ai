@@ -1,6 +1,21 @@
+"use client";
+
 import Image from 'next/image';
+import { useLanguage, useTranslation } from '@/context/LanguageContext';
+
+const navItems = [
+  { href: '#about', key: 'navbar.about' },
+  { href: '#usecases', key: 'navbar.usecases' },
+  { href: '#stats', key: 'navbar.stats' },
+  { href: '#pricing', key: 'navbar.pricing' },
+  { href: '#testimonials', key: 'navbar.testimonials' },
+  { href: '#faq', key: 'navbar.faq' },
+] as const;
 
 export function SiteHeader() {
+  const { t } = useTranslation();
+  const { language, toggleLanguage } = useLanguage();
+
   return (
           <header
             id='site-header'
@@ -18,35 +33,33 @@ export function SiteHeader() {
                 />
               </a>
               <nav className='hidden lg:flex items-center gap-8'>
-                <a href='#about' className='nav-link text-[15px]'>
-                  من نحن
-                </a>
-                <a href='#usecases' className='nav-link text-[15px]'>
-                  استخدامات الأداة
-                </a>
-                <a href='#stats' className='nav-link text-[15px]'>
-                  الأرقام والإحصائيات
-                </a>
-                <a href='#pricing' className='nav-link text-[15px]'>
-                  الأسعار
-                </a>
-                <a href='#testimonials' className='nav-link text-[15px]'>
-                  آراء العملاء
-                </a>
-                <a href='#faq' className='nav-link text-[15px]'>
-                  الأسئلة الشائعة
-                </a>
+                {navItems.map((item) => (
+                  <a key={item.href} href={item.href} className='nav-link text-[15px]'>
+                    {t(item.key)}
+                  </a>
+                ))}
               </nav>
               <div className='flex items-center gap-3'>
+                <button
+                  id='language-toggle'
+                  type='button'
+                  className='language-toggle'
+                  aria-label='Change language'
+                  aria-pressed={language === 'en'}
+                  data-lang={language}
+                  onClick={toggleLanguage}
+                >
+                  <span>{t('navbar.languageToggle')}</span>
+                </button>
                 <a
                   href='#pricing'
                   className='btn btn-primary px-6 py-3 hidden sm:inline-flex'
                 >
-                  ابدأ الآن
+                  {t('navbar.cta')}
                 </a>
                 <button
                   id='menu-toggle'
-                  aria-label='القائمة'
+                  aria-label={t('navbar.menu')}
                   className='lg:hidden w-11 h-11 rounded-full border border-[#ecefe7] bg-white flex items-center justify-center'
                 >
                   <svg
@@ -70,26 +83,13 @@ export function SiteHeader() {
               className='mobile-menu lg:hidden bg-white border-t border-[#ecefe7]'
             >
               <nav className='px-5 py-4 flex flex-col gap-1'>
-                <a href='#about' className='py-3 text-ink/80 font-semibold'>
-                  من نحن
-                </a>
-                <a href='#usecases' className='py-3 text-ink/80 font-semibold'>
-                  استخدامات الأداة
-                </a>
-                <a href='#stats' className='py-3 text-ink/80 font-semibold'>
-                  الأرقام والإحصائيات
-                </a>
-                <a href='#pricing' className='py-3 text-ink/80 font-semibold'>
-                  الأسعار
-                </a>
-                <a href='#testimonials' className='py-3 text-ink/80 font-semibold'>
-                  آراء العملاء
-                </a>
-                <a href='#faq' className='py-3 text-ink/80 font-semibold'>
-                  الأسئلة الشائعة
-                </a>
+                {navItems.map((item) => (
+                  <a key={item.href} href={item.href} className='py-3 text-ink/80 font-semibold'>
+                    {t(item.key)}
+                  </a>
+                ))}
                 <a href='#pricing' className='btn btn-primary px-6 py-3 mt-2'>
-                  ابدأ الآن
+                  {t('navbar.cta')}
                 </a>
               </nav>
             </div>

@@ -339,21 +339,41 @@ export function GsapAnimations() {
       if (slides.length && dotsWrap) {
         let idx = 0;
         let timer: number | null = null;
+        const portraitWrap = root.querySelector<HTMLElement>("#t-portrait-wrap");
+        const portraitInitial = root.querySelector<SVGTextElement>("#t-portrait-initial");
         dotsWrap.textContent = "";
         slides.forEach((_, i) => {
           const dot = document.createElement("button");
           dot.className = "w-2.5 h-2.5 rounded-full transition-all";
           dot.setAttribute("aria-label", `شريحة ${i + 1}`);
           dot.addEventListener("click", () => go(i, true));
+          dot.addEventListener("pointerenter", () => go(i, true));
           dotsWrap.appendChild(dot);
         });
         const dots = Array.from(dotsWrap.children) as HTMLElement[];
+        const updatePortrait = () => {
+          const slide = slides[idx];
+          const initial = slide.dataset.portraitInitial || "";
+          const color = slide.dataset.portraitColor || "#a0cd39";
+          if (portraitInitial) portraitInitial.textContent = initial;
+          if (portraitWrap) {
+            portraitWrap.style.backgroundColor = color;
+            if (!prefersReduced) {
+              gsap.fromTo(
+                portraitWrap,
+                { autoAlpha: 0.72, scale: 0.96 },
+                { autoAlpha: 1, scale: 1, duration: 0.45, ease: "power3.out", overwrite: "auto" },
+              );
+            }
+          }
+        };
         const render = () => {
           slides.forEach((slide, i) => slide.classList.toggle("active", i === idx));
           dots.forEach((dot, i) => {
             dot.style.backgroundColor = i === idx ? "#a0cd39" : "#d8ddd1";
             dot.style.width = i === idx ? "22px" : "10px";
           });
+          updatePortrait();
           if (!prefersReduced) {
             gsap.fromTo(slides[idx], { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" });
           }
@@ -373,10 +393,20 @@ export function GsapAnimations() {
         const nextClick = () => go(idx + 1, true);
         prev?.addEventListener("click", prevClick);
         next?.addEventListener("click", nextClick);
+        const slideCleanups = slides.map((slide, i) => {
+          const onPointerEnter = () => go(i, true);
+          slide.addEventListener("pointerenter", onPointerEnter);
+          slide.addEventListener("focusin", onPointerEnter);
+          return () => {
+            slide.removeEventListener("pointerenter", onPointerEnter);
+            slide.removeEventListener("focusin", onPointerEnter);
+          };
+        });
         cleanups.push(() => {
           if (timer) window.clearInterval(timer);
           prev?.removeEventListener("click", prevClick);
           next?.removeEventListener("click", nextClick);
+          slideCleanups.forEach((cleanup) => cleanup());
         });
         render();
         restart();

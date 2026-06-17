@@ -1,4 +1,13 @@
+"use client";
+
+import { useState } from "react";
+import { useTranslation } from "@/context/LanguageContext";
+
 export function HeroSection() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const { t } = useTranslation();
+  const videoSrc = "https://www.youtube.com/embed/VIDEO_ID";
+
   return (
     <section
       id='hero'
@@ -33,7 +42,7 @@ export function HeroSection() {
           </p>
 
           <div
-            className='mt-9 flex flex-wrap items-center gap-4'
+            className='hero-actions mt-9 flex flex-wrap items-center gap-4'
             data-anim='fade-up'
           >
             <a
@@ -42,11 +51,12 @@ export function HeroSection() {
             >
               ابدأ مجاناً
             </a>
-       <a
-  href="https://www.youtube.com"
-  target="_blank"
-  rel="noopener noreferrer"
+       <button
+  type="button"
   className="btn btn-ghost px-7 py-4 text-lg"
+  aria-expanded={isVideoOpen}
+  aria-controls="hero-video-player"
+  onClick={() => setIsVideoOpen((open) => !open)}
 >
   <svg
     width="20"
@@ -57,9 +67,30 @@ export function HeroSection() {
   >
     <path d="M8 5v14l11-7z" />
   </svg>
-  شاهد كيف تعمل
-</a>
+  <span>{t("hero.watch")}</span>
+</button>
           </div>
+          {isVideoOpen ? (
+            <div id="hero-video-player" className="inline-video-player">
+              <div className="inline-video-player__header">
+                <span>{t("hero.watch")}</span>
+                <button
+                  type="button"
+                  className="inline-video-player__close"
+                  aria-label="Close video"
+                  onClick={() => setIsVideoOpen(false)}
+                >
+                  ×
+                </button>
+              </div>
+              <iframe
+                src={`${videoSrc}?autoplay=1&rel=0`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          ) : null}
           <div
             className='mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-[#5b6760]'
             data-anim='fade-up'
