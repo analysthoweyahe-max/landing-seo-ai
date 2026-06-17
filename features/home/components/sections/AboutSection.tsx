@@ -1,0 +1,102 @@
+export function AboutSection() {
+  return (
+            <section
+              id='about'
+              className='bg-pattern relative overflow-hidden py-20 lg:py-28'
+            >
+              <div className='glow w-[440px] h-[440px] bottom-0 -right-32 opacity-50'></div>
+    
+              <div className='layer-content mx-auto max-w-7xl px-5 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center'>
+                <div data-anim='fade-up'>
+                  <div className='eyebrow mb-6'>من نحن</div>
+                  <h2 className='text-3xl sm:text-4xl lg:text-[2.7rem] font-extrabold leading-[1.25] text-ink'>
+                    نصنع أدوات ذكية تساعد الأعمال على النمو عبر الإنترنت بثقة
+                  </h2>
+                  <p className='mt-5 text-lg text-[#4a5a4c] leading-relaxed'>
+                    في <span className='font-bold text-ink'>هويّة</span> نؤمن أن
+                    تحسين محركات البحث يجب أن يكون بسيطاً وموثوقاً للجميع. نجمع بين
+                    الذكاء الاصطناعي والخبرة لنمنح المتاجر والمواقع العربية أداة
+                    تنمو معها.
+                  </p>
+                  <a
+                    href='#testimonials'
+                    className='btn btn-ghost px-7 py-4 mt-8 text-lg'
+                  >
+                    اعرف أكثر عن هويتنا
+                    <svg
+                      width='20'
+                      height='20'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                      stroke='currentColor'
+                      strokeWidth='2.5'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    >
+                      <line x1='19' y1='12' x2='5' y2='12' />
+                      <polyline points='12 19 5 12 12 5' />
+                    </svg>
+                  </a>
+                </div>
+                <div className='relative' data-anim='zoom'>
+                  <div className='absolute inset-8 rounded-[2.5rem] bg-primary/10 blur-3xl'></div>
+                  <div className='surface relative p-8 sm:p-10 text-center overflow-hidden'>
+                    <div
+                      className='swirl-watermark inset-0 bg-center'
+                      style={{ opacity: '0.06' }}
+                    ></div>
+                    <div className='relative'>
+                      {/* <Image
+                        src='logo.webp'
+                        alt='هويّة'
+                        width={180}
+                        height={120}
+                        className='h-16 w-auto mx-auto'
+                      /> */}
+                      <p className='mt-6 text-xl font-bold text-ink leading-relaxed'>
+                        «نحوّل تعقيد الـ SEO إلى خطوات بسيطة، آمنة، ومؤتمتة.»
+                      </p>
+                      <div className='mt-8 grid grid-cols-3 gap-4'>
+                        <div className='rounded-2xl bg-[#f8faf4] border border-[#ecefe7] p-4'>
+                          <div
+                            className='text-2xl font-extrabold text-primary-700'
+                            data-counter
+                            data-target='2018'
+                            data-plain
+                          >
+                            0
+                          </div>
+                          <div className='text-[11px] font-bold text-[#9aa49a] mt-1'>
+                            سنة التأسيس
+                          </div>
+                        </div>
+                        <div className='rounded-2xl bg-[#f8faf4] border border-[#ecefe7] p-4'>
+                          <div className='text-2xl font-extrabold text-primary-700'>
+                            <span data-counter data-target='40'>
+                              0
+                            </span>
+                            +
+                          </div>
+                          <div className='text-[11px] font-bold text-[#9aa49a] mt-1'>
+                            خبير في الفريق
+                          </div>
+                        </div>
+                        <div className='rounded-2xl bg-[#f8faf4] border border-[#ecefe7] p-4'>
+                          <div className='text-2xl font-extrabold text-primary-700'>
+                            <span data-counter data-target='6'>
+                              0
+                            </span>
+                          </div>
+                          <div className='text-[11px] font-bold text-[#9aa49a] mt-1'>
+                            دول نخدمها
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+  );
+}
+
