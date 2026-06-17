@@ -10,7 +10,7 @@ export function SiteFooter() {
             <div className='relative border-b border-white/10'>
               <div className='glow w-[520px] h-[520px] -top-40 left-1/2 -translate-x-1/2 opacity-40'></div>
               <div
-                className='layer-content mx-auto max-w-4xl px-5 lg:px-8 py-20 text-center'
+                className='layer-content mx-auto max-w-7xl px-5 lg:px-8 py-20 text-center'
                 data-anim='fade-up'
               >
                 <h2 className='text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.3]'>
@@ -28,9 +28,8 @@ export function SiteFooter() {
                 </a>
               </div>
             </div>
-            <div className='relative layer-content mx-auto max-w-7xl px-5 lg:px-8 py-16'>
-              <div className='grid gap-12 lg:grid-cols-12'>
-                <div className='lg:col-span-4'>
+            <div className='relative layer-content mx-auto w-full max-w-7xl px-5 lg:px-8 py-16'>
+<div className='grid gap-10 lg:gap-12 xl:gap-16 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]'>                <div>
                   <Image
                     src='/logo.webp'
                     alt='هويّة'
@@ -97,7 +96,7 @@ export function SiteFooter() {
                     </a>
                   </div>
                 </div>
-                <div className='lg:col-span-2'>
+                <div>
                   <h4 className='font-extrabold mb-4'>المنصة</h4>
                   <ul className='space-y-3 text-white/65'>
                     <li>
@@ -134,7 +133,7 @@ export function SiteFooter() {
                     </li>
                   </ul>
                 </div>
-                <div className='lg:col-span-2'>
+                <div>
                   <h4 className='font-extrabold mb-4'>الشركة</h4>
                   <ul className='space-y-3 text-white/65'>
                     <li>
@@ -168,9 +167,9 @@ export function SiteFooter() {
                     </li>
                   </ul>
                 </div>
-                <div className='lg:col-span-4'>
+                <div className='md:col-span-2 lg:col-span-1'>
                   <h4 className='font-extrabold mb-4'>موثوقون رسمياً</h4>
-                  <div className='rounded-2xl bg-white p-4 inline-block'>
+                  <div className='rounded-2xl bg-white p-4 inline-flex max-w-full'>
                     <Image
                       src='/ministry-commerce-certification 1.png'
                       alt='موثق لدى وزارة التجارة والاستثمار'
@@ -216,7 +215,7 @@ export function SiteFooter() {
     
               <div className='mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/55'>
                 <p>© 2026 هويّة. جميع الحقوق محفوظة.</p>
-                <div className='flex items-center gap-6'>
+                <div className='flex flex-wrap items-center justify-center gap-x-6 gap-y-2'>
                   <a href='#' className='hover:text-primary transition-colors'>
                     سياسة الخصوصية
                   </a>

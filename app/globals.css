@@ -602,6 +602,7 @@ body {
 .marquee-track {
   display: flex;
   width: max-content;
+  transform: translateX(0);
   will-change: transform;
 }
 
@@ -610,11 +611,11 @@ body {
   flex: none;
 }
 
-.marquee-ltr {
+.marquee-ltr[data-marquee-ready='true'] {
   animation: marqueeLtr 34s linear infinite;
 }
 
-.marquee-rtl {
+.marquee-rtl[data-marquee-ready='true'] {
   animation: marqueeRtl 40s linear infinite;
 }
 
@@ -624,11 +625,11 @@ body {
 
 @keyframes marqueeLtr {
   from {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
 
   to {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 }
 

@@ -422,18 +422,22 @@ export function GsapAnimations() {
         });
       };
       const fillMarquee = (track: HTMLElement) => {
-        track.textContent = "";
+        track.removeAttribute("data-marquee-ready");
         const group = document.createElement("div");
         group.className = "marquee-group";
-        track.appendChild(group);
         let guard = 0;
         do {
           appendSet(group);
           guard += 1;
-        } while (group.offsetWidth < window.innerWidth && guard < 30);
+          track.appendChild(group);
+        } while (group.offsetWidth < window.innerWidth * 1.15 && guard < 30);
+        group.remove();
         const clone = group.cloneNode(true) as HTMLElement;
         clone.setAttribute("aria-hidden", "true");
-        track.appendChild(clone);
+        track.replaceChildren(group, clone);
+        window.requestAnimationFrame(() => {
+          track.setAttribute("data-marquee-ready", "true");
+        });
       };
       const marquees = Array.from(root.querySelectorAll<HTMLElement>("[data-marquee]"));
       marquees.forEach(fillMarquee);
@@ -473,7 +477,6 @@ export function GsapAnimations() {
             const imageLeft = i % 2 === 0;
             pts.push({ x: imageLeft ? width * 0.3 : width * 0.7, y: cy });
           });
-          pts.push({ x: width * 0.5, y: height });
           let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
           for (let i = 0; i < pts.length - 1; i += 1) {
             const p = pts[i];
@@ -486,7 +489,7 @@ export function GsapAnimations() {
           prog.setAttribute("d", d);
           nodesG.textContent = "";
           state.nodes = [];
-          for (let i = 1; i < pts.length - 1; i += 1) {
+          for (let i = 1; i < pts.length; i += 1) {
             const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
             ring.setAttribute("class", "flow-node-ring");
             ring.setAttribute("cx", String(pts[i].x));
