@@ -40,7 +40,7 @@ export function AboutSection() {
                 </div>
                 <div className='relative' data-anim='zoom'>
                   <div className='absolute inset-8 rounded-[2.5rem] bg-primary/10 blur-3xl'></div>
-                  <div className='surface relative p-8 sm:p-10 text-center overflow-hidden'>
+                  <div className='surface pattern-card relative p-8 sm:p-10 text-center overflow-hidden'>
                     <div
                       className='swirl-watermark inset-0 bg-center'
                       style={{ opacity: '0.06' }}

@@ -57,7 +57,7 @@ export function StatsSection() {
           </div>
 
           <div
-            className='hover-lift surface lg:col-span-2 p-7 flex flex-col justify-center'
+            className='hover-lift surface pattern-card lg:col-span-2 p-7 flex flex-col justify-center'
             data-anim='fade-up'
           >
             <div className='text-sm font-extrabold text-[#9aa49a] mb-2'>
@@ -75,7 +75,7 @@ export function StatsSection() {
           </div>
 
           <div
-            className='hover-lift surface p-7 flex flex-col justify-center'
+            className='hover-lift surface pattern-card p-7 flex flex-col justify-center'
             data-anim='fade-up'
           >
             <div className='text-sm font-extrabold text-[#9aa49a] mb-2'>
@@ -89,7 +89,7 @@ export function StatsSection() {
           </div>
 
           <div
-            className='hover-lift surface p-7 flex flex-col justify-center'
+            className='hover-lift surface pattern-card p-7 flex flex-col justify-center'
             data-anim='fade-up'
           >
             <div className='text-sm font-extrabold text-[#9aa49a] mb-2'>

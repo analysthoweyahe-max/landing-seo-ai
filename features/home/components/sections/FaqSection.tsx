@@ -45,7 +45,7 @@ export function FaqSection() {
         </div>
 
         <div className='grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 items-center' dir='ltr'>
-          <div className='faq-visual surface relative overflow-hidden p-5 sm:p-6 order-2 lg:order-1' data-anim='fade-up' dir='rtl'>
+          <div className='faq-visual surface pattern-card relative overflow-hidden p-5 sm:p-6 order-2 lg:order-1' data-anim='fade-up' dir='rtl'>
             <div className='faq-browser rounded-[1.25rem] border border-[#edf1e8] bg-white p-5 shadow-[0_28px_70px_-45px_rgba(19,26,20,0.5)]'>
               <div className='flex items-center justify-between text-sm font-bold text-[#9aa49a]'>
                 <span>مركز المساعدة</span>
@@ -85,7 +85,7 @@ export function FaqSection() {
 
           <div className='space-y-4 order-1 lg:order-2' id='faq-list' dir='rtl'>
             {faqs.map((faq) => (
-              <div className='faq-item surface overflow-hidden' data-anim='fade-up' key={faq.question}>
+              <div className='faq-item surface pattern-card overflow-hidden' data-anim='fade-up' key={faq.question}>
                 <button className='faq-head w-full flex items-center gap-4 text-right px-6 py-5'>
                   <span className='text-lg font-extrabold text-ink flex-1'>{faq.question}</span>
                   <span className='faq-icon w-9 h-9 shrink-0 rounded-full bg-[#f3f6ec] text-primary-700 flex items-center justify-center text-xl font-bold'>

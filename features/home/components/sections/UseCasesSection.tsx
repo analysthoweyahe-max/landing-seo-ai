@@ -117,7 +117,7 @@ export function UseCasesSection() {
               data-from='left'
             >
               <div className='absolute inset-8 rounded-[2.5rem] bg-primary/10 blur-3xl'></div>
-              <div className='surface hover-lift relative p-6 sm:p-7'>
+              <div className='surface hover-lift pattern-card relative p-6 sm:p-7'>
                 <div className='flex items-center justify-between mb-5'>
                   <div className='flex items-center gap-2'>
                     <span className='w-3 h-3 rounded-full bg-[#ff6058]'></span>
@@ -257,7 +257,7 @@ export function UseCasesSection() {
               data-from='right'
             >
               <div className='absolute inset-8 rounded-[2.5rem] bg-primary/10 blur-3xl'></div>
-              <div className='surface hover-lift relative p-6 sm:p-7'>
+              <div className='surface hover-lift pattern-card relative p-6 sm:p-7'>
                 <div className='flex items-center gap-2 mb-5'>
                   <span className='w-7 h-7 rounded-lg bg-primary/20 flex items-center justify-center'>
                     <svg
@@ -403,7 +403,7 @@ export function UseCasesSection() {
               data-from='left'
             >
               <div className='absolute inset-8 rounded-[2.5rem] bg-primary/10 blur-3xl'></div>
-              <div className='surface hover-lift relative p-6 sm:p-7'>
+              <div className='surface hover-lift pattern-card relative p-6 sm:p-7'>
                 <div className='flex items-center justify-between mb-5'>
                   <span className='text-sm font-extrabold text-ink'>
                     مراجعة التغييرات
@@ -551,7 +551,7 @@ export function UseCasesSection() {
               data-from='right'
             >
               <div className='absolute inset-8 rounded-[2.5rem] bg-primary/10 blur-3xl'></div>
-              <div className='surface hover-lift relative p-6 sm:p-7'>
+              <div className='surface hover-lift pattern-card relative p-6 sm:p-7'>
                 <div className='flex items-center justify-between mb-5'>
                   <div>
                     <div className='text-sm font-extrabold text-ink'>

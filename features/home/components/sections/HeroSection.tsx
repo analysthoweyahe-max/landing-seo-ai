@@ -164,7 +164,7 @@ export function HeroSection() {
         </div>
         <div className='relative' data-anim='zoom'>
           <div className='absolute inset-6 rounded-[2.5rem] bg-primary/10 blur-3xl'></div>
-          <div className='surface relative p-5 sm:p-6'>
+          <div className='surface pattern-card relative p-5 sm:p-6'>
             <div className='flex items-center justify-between mb-5'>
               <div className='flex items-center gap-2'>
                 <span className='w-3 h-3 rounded-full bg-[#ff6058]'></span>

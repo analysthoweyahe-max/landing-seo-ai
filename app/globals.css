@@ -2,12 +2,12 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #a0cd39;
+  --color-primary: #A0CD39;
   --color-primary-50: #f5faea;
   --color-primary-100: #e9f3cf;
   --color-primary-200: #d6e9a4;
   --color-primary-300: #bedc6f;
-  --color-primary-400: #a0cd39;
+  --color-primary-400: #A0CD39;
   --color-primary-500: #8ab72e;
   --color-primary-600: #759c25;
   --color-primary-700: #5c7a20;
@@ -29,7 +29,7 @@
    ========================================================================== */
 
 :root {
-  --primary: #a0cd39;
+  --primary: #A0CD39;
   --primary-600: #8ab72e;
   --primary-700: #759c25;
   --ink: #131a14;
@@ -72,10 +72,14 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/digital_print.png');
-  background-repeat: repeat;
-  background-size: 520px;
-  opacity: 0.035;
+  background-color: rgba(160, 205, 57, 0.13);
+  mask-image: url('/digital_print.png');
+  mask-repeat: repeat;
+  mask-size: 520px;
+  -webkit-mask-image: url('/digital_print.png');
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-size: 520px;
+  opacity: 1;
   pointer-events: none;
   z-index: 0;
 }
@@ -88,10 +92,14 @@ section:not(.bg-pattern)::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/digital_print.png');
-  background-repeat: repeat;
-  background-size: 520px;
-  opacity: 0.025;
+  background-color: rgba(160, 205, 57, 0.1);
+  mask-image: url('/digital_print.png');
+  mask-repeat: repeat;
+  mask-size: 520px;
+  -webkit-mask-image: url('/digital_print.png');
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-size: 520px;
+  opacity: 1;
   pointer-events: none;
   z-index: 0;
 }
@@ -416,11 +424,14 @@ section:not(.bg-pattern)::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 16px 16px, rgba(160, 205, 57, 0.12) 1.5px, transparent 1.5px),
-    url('/digital_print.png');
-  background-size: 32px 32px, 420px;
-  opacity: 0.22;
+  background-color: rgba(160, 205, 57, 0.18);
+  mask-image: url('/digital_print.png');
+  mask-repeat: repeat;
+  mask-size: 420px;
+  -webkit-mask-image: url('/digital_print.png');
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-size: 420px;
+  opacity: 0.32;
   pointer-events: none;
   z-index: -1;
 }
@@ -435,22 +446,19 @@ section:not(.bg-pattern)::before {
 }
 
 .pricing-section::before {
-  background-image:
-    linear-gradient(135deg, rgba(160, 205, 57, 0.11) 0 12px, transparent 12px 38px),
-    radial-gradient(circle at 18% 22%, rgba(160, 205, 57, 0.22) 0 2px, transparent 3px),
-    radial-gradient(circle at 82% 76%, rgba(117, 156, 37, 0.18) 0 2px, transparent 3px),
-    url('/digital_print.png');
-  background-size: 210px 210px, 84px 84px, 120px 120px, 520px;
-  opacity: 0.28;
+  background-color: rgba(160, 205, 57, 0.16);
+  background-image: none;
+  mask-image: url('/digital_print.png');
+  mask-repeat: repeat;
+  mask-size: 520px;
+  -webkit-mask-image: url('/digital_print.png');
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-size: 520px;
+  opacity: 1;
 }
 
 .pricing-section {
-  background-color: #fbfdf7;
-  background-image:
-    linear-gradient(135deg, rgba(160, 205, 57, 0.1) 0 14px, transparent 14px 42px),
-    radial-gradient(circle at 14% 20%, rgba(160, 205, 57, 0.18) 0 2px, transparent 3px),
-    radial-gradient(circle at 86% 72%, rgba(117, 156, 37, 0.16) 0 2px, transparent 3px);
-  background-size: 220px 220px, 90px 90px, 132px 132px;
+  background-color: #fbfdf4;
 }
 
 .pricing-section::after {
