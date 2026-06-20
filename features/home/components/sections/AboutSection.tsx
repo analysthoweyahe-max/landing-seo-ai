@@ -2,7 +2,7 @@ export function AboutSection() {
   return (
             <section
               id='about'
-              className='bg-pattern relative overflow-hidden py-20 lg:py-28'
+              className='bg-pattern relative overflow-hidden py-14 lg:py-20'
             >
               <div className='glow w-[440px] h-[440px] bottom-0 -right-32 opacity-50'></div>
     

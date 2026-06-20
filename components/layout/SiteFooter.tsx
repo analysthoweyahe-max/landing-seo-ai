@@ -10,7 +10,7 @@ export function SiteFooter() {
             <div className='relative border-b border-white/10'>
               <div className='glow w-[520px] h-[520px] -top-40 left-1/2 -translate-x-1/2 opacity-40'></div>
               <div
-                className='layer-content mx-auto max-w-7xl px-5 lg:px-8 py-20 text-center'
+                className='layer-content mx-auto max-w-7xl px-5 lg:px-8 py-14 lg:py-20 text-center'
                 data-anim='fade-up'
               >
                 <h2 className='text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.3]'>
@@ -28,7 +28,7 @@ export function SiteFooter() {
                 </a>
               </div>
             </div>
-            <div className='relative layer-content mx-auto w-full max-w-7xl px-5 lg:px-8 py-16'>
+            <div className='relative layer-content mx-auto w-full max-w-7xl px-5 lg:px-8 py-12 lg:py-14'>
 <div className='grid gap-10 lg:gap-12 xl:gap-16 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]'>                <div>
                   <Image
                     src='/logo.webp'

@@ -4,7 +4,7 @@ export function StatsSection() {
   return (
     <section
       id='stats'
-      className='bg-pattern relative overflow-hidden py-20 lg:py-28'
+      className='bg-pattern relative overflow-hidden py-14 lg:py-20'
     >
       <div className='glow w-[520px] h-[520px] -bottom-32 -left-20 opacity-55'></div>
 

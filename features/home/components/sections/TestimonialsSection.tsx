@@ -2,7 +2,7 @@ export function TestimonialsSection() {
   return (
             <section
               id='testimonials'
-              className='bg-pattern relative overflow-hidden py-20 lg:py-28'
+              className='bg-pattern relative overflow-hidden py-14 lg:py-20'
             >
               <div className='glow w-[420px] h-[420px] top-10 -right-28 opacity-50'></div>
     

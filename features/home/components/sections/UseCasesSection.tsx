@@ -2,7 +2,7 @@ export function UseCasesSection() {
   return (
     <section
       id='usecases'
-      className='bg-pattern relative overflow-hidden py-20 lg:py-28'
+      className='bg-pattern relative overflow-hidden py-14 lg:py-20'
     >
       <div className='glow w-[460px] h-[460px] top-10 -left-40 opacity-60'></div>
       <div className='glow w-[420px] h-[420px] bottom-1/4 -right-32 opacity-50'></div>
