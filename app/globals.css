@@ -74,11 +74,13 @@ body {
   inset: 0;
   background-color: rgba(160, 205, 57, 0.13);
   mask-image: url('/digital_print.png');
-  mask-repeat: repeat;
+  mask-repeat: no-repeat;
   mask-size: 520px;
+  mask-position: center;
   -webkit-mask-image: url('/digital_print.png');
-  -webkit-mask-repeat: repeat;
+  -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 520px;
+  -webkit-mask-position: center;
   opacity: 1;
   pointer-events: none;
   z-index: 0;
@@ -94,11 +96,13 @@ section:not(.bg-pattern)::before {
   inset: 0;
   background-color: rgba(160, 205, 57, 0.1);
   mask-image: url('/digital_print.png');
-  mask-repeat: repeat;
+  mask-repeat: no-repeat;
   mask-size: 520px;
+  mask-position: center;
   -webkit-mask-image: url('/digital_print.png');
-  -webkit-mask-repeat: repeat;
+  -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 520px;
+  -webkit-mask-position: center;
   opacity: 1;
   pointer-events: none;
   z-index: 0;
@@ -449,25 +453,25 @@ section:not(.bg-pattern)::before {
   background-color: rgba(160, 205, 57, 0.16);
   background-image: none;
   mask-image: url('/digital_print.png');
-  mask-repeat: repeat;
+  mask-repeat: no-repeat;
   mask-size: 520px;
+  mask-position: center;
   -webkit-mask-image: url('/digital_print.png');
-  -webkit-mask-repeat: repeat;
+  -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 520px;
+  -webkit-mask-position: center;
   opacity: 1;
 }
 
 .pricing-section {
-  background-color: #fbfdf4;
+  background: linear-gradient(175deg, #e8f5c0 0%, #f4fce0 18%, #fafef5 42%, #ffffff 70%);
 }
 
 .pricing-section::after {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.78), rgba(248, 252, 240, 0.54), rgba(255, 255, 255, 0.78)),
-    radial-gradient(circle at 50% 58%, rgba(160, 205, 57, 0.12), transparent 38%);
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(160, 205, 57, 0.08), transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -483,17 +487,13 @@ section:not(.bg-pattern)::before {
 
 .pricing-card-v2 {
   background-color: #ffffff;
-  background-image:
-    linear-gradient(90deg, rgba(160, 205, 57, 0.1) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(160, 205, 57, 0.1) 1px, transparent 1px),
-    radial-gradient(circle at 84% 16%, rgba(160, 205, 57, 0.2), transparent 26%),
-    radial-gradient(circle at 12% 88%, rgba(117, 156, 37, 0.12), transparent 24%);
-  background-size: 34px 34px, 34px 34px, 100% 100%, 100% 100%;
-  border: 1.5px solid #e5eadf;
+  background-image: none;
+  overflow: hidden;
+  border: 1.5px solid #e8ecde;
   border-radius: 1.75rem;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 24px 58px -38px rgba(19, 26, 20, 0.28);
+  box-shadow: 0 4px 16px -4px rgba(19, 26, 20, 0.08), 0 1px 4px rgba(19, 26, 20, 0.04);
   transition:
     transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.3s ease,
@@ -503,44 +503,53 @@ section:not(.bg-pattern)::before {
 .pricing-card-v2:focus-visible {
   border-color: var(--primary);
   box-shadow:
-    0 34px 80px -38px rgba(19, 26, 20, 0.34),
+    0 8px 24px -8px rgba(19, 26, 20, 0.16),
     0 0 0 4px rgba(160, 205, 57, 0.18);
 }
 
 .pricing-card-v2:hover {
   transform: translateY(-6px);
-  border-color: var(--primary);
-  box-shadow: 0 34px 80px -38px rgba(19, 26, 20, 0.34);
+  border-color: rgba(160, 205, 57, 0.55);
+  box-shadow: 0 12px 32px -10px rgba(19, 26, 20, 0.14);
 }
 
 .pricing-card-v2-featured {
-  border: 2px solid var(--primary);
+  background-color: #a0cd39;
+  border: none;
   animation: pricingCenterIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow:
-    0 34px 64px -30px rgba(19, 26, 20, 0.36),
-    0 52px 110px -42px rgba(160, 205, 57, 0.95),
-    0 0 0 12px rgba(160, 205, 57, 0.08);
+    0 0 0 7px rgba(160, 205, 57, 0.2),
+    0 24px 50px -12px rgba(72, 108, 15, 0.55),
+    0 6px 14px rgba(19, 26, 20, 0.08);
 }
 
 .pricing-card-v2-featured:hover {
-  border-color: var(--primary);
   transform: translateY(-6px);
   box-shadow:
-    0 40px 72px -30px rgba(19, 26, 20, 0.4),
-    0 58px 120px -40px rgba(160, 205, 57, 1),
-    0 0 0 14px rgba(160, 205, 57, 0.1);
+    0 0 0 9px rgba(160, 205, 57, 0.24),
+    0 32px 60px -12px rgba(72, 108, 15, 0.6),
+    0 8px 18px rgba(19, 26, 20, 0.1);
 }
 
 .pricing-card-v2-featured::before {
-  opacity: 0.3;
+  display: none;
+}
+
+.pricing-card-v2-featured::after {
+  display: none;
 }
 
 .pricing-card-v2-featured {
   background-image:
-    linear-gradient(90deg, rgba(160, 205, 57, 0.14) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(160, 205, 57, 0.14) 1px, transparent 1px),
-    radial-gradient(circle at 84% 16%, rgba(160, 205, 57, 0.28), transparent 28%),
-    radial-gradient(circle at 12% 88%, rgba(117, 156, 37, 0.16), transparent 26%);
+    linear-gradient(148deg, rgba(255, 255, 255, 0.22) 0%, transparent 48%, rgba(0, 0, 0, 0.08) 100%);
+}
+
+.pricing-card-v2-featured .check {
+  background: rgba(20, 33, 10, 0.18);
+}
+
+.pricing-card-v2-featured .check::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314210a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
 }
 
 @keyframes pricingCenterIn {
@@ -561,6 +570,30 @@ section:not(.bg-pattern)::before {
 
 .pricing-main-cta {
   box-shadow: 0 20px 40px -18px rgba(160, 205, 57, 0.9);
+}
+
+.pricing-main-cta-featured {
+  background-color: #14210a;
+  color: var(--primary);
+  border-radius: 9999px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 32px -10px rgba(20, 33, 10, 0.45);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.pricing-main-cta-featured:hover {
+  background-color: #0c1606;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px -10px rgba(20, 33, 10, 0.55);
 }
 
 .pricing-check {
