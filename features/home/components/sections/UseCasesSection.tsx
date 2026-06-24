@@ -1,4 +1,34 @@
-export function UseCasesSection() {
+import { apiFetch, stripHtml } from '@/lib/api';
+import type { ToolUsage } from '@/types/api';
+
+const FEATURE_EYEBROWS = [
+  'الميزة 01 — فحص الموقع',
+  'الميزة 02 — الذكاء الاصطناعي',
+  'الميزة 03 — التحكّم البشري',
+  'الميزة 04 — المراقبة والتقارير',
+];
+
+const FEATURE_LINKS = [
+  { href: '#pricing', label: 'اكتشف كيف يعمل الفحص' },
+  { href: '#pricing', label: 'شاهد الاقتراحات' },
+  { href: '#pricing', label: 'اعرف المزيد' },
+  { href: '#stats',   label: 'استكشف التقارير' },
+];
+
+export async function UseCasesSection() {
+  const toolUsages = await apiFetch<ToolUsage[]>('/api/v1/tool-usages?lang=ar');
+  const features = toolUsages?.[0]?.features ?? [];
+
+  const sectionTitle = toolUsages?.[0]?.title ? stripHtml(toolUsages[0].title) : 'جولة داخل المنصة — من الفحص إلى النتائج';
+  const sectionDesc = toolUsages?.[0]?.description ? stripHtml(toolUsages[0].description) : 'أربع قدرات أساسية تعمل معاً لتمنح موقعك حضوراً أقوى في محركات البحث، مع إبقائك دائماً في موضع التحكّم.';
+
+  const f = (i: number) => ({
+    eyebrow: FEATURE_EYEBROWS[i] ?? `الميزة 0${i + 1}`,
+    title:   features[i]?.title       ?? '',
+    desc:    features[i]?.description ?? '',
+    link:    FEATURE_LINKS[i] ?? { href: '#pricing', label: 'اعرف المزيد' },
+  });
+
   return (
     <section
       id='usecases'
@@ -14,11 +44,10 @@ export function UseCasesSection() {
         >
           <div className='eyebrow mb-6'>استخدامات الأداة</div>
           <h2 className='text-3xl sm:text-4xl lg:text-[2.7rem] font-extrabold leading-[1.25] text-ink'>
-            جولة داخل المنصة — من الفحص إلى النتائج
+            {sectionTitle}
           </h2>
           <p className='mt-5 text-lg text-[#4a5a4c] leading-relaxed'>
-            أربع قدرات أساسية تعمل معاً لتمنح موقعك حضوراً أقوى في محركات
-            البحث، مع إبقائك دائماً في موضع التحكّم.
+            {sectionDesc}
           </p>
         </div>
 
@@ -82,19 +111,18 @@ export function UseCasesSection() {
           </svg>
           <div className='feature-block relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16'>
             <div className='lg:w-1/2' data-anim='slide' data-from='right'>
-              <div className='eyebrow mb-5'>الميزة 01 — فحص الموقع</div>
+              <div className='eyebrow mb-5'>{f(0).eyebrow}</div>
               <h3 className='text-2xl sm:text-3xl lg:text-[2.2rem] font-extrabold leading-[1.3] text-ink'>
-                فحص شامل لموقعك خلال دقائق
+                {f(0).title || 'فحص شامل لموقعك خلال دقائق'}
               </h3>
               <p className='mt-5 text-lg text-[#4a5a4c] leading-relaxed'>
-                يقوم النظام بفحص جميع صفحات الموقع واكتشاف المشكلات التقنية
-                ومشكلات المحتوى وعوامل تحسين محركات البحث بشكل تلقائي.
+                {f(0).desc || 'يقوم النظام بفحص جميع صفحات الموقع واكتشاف المشكلات التقنية ومشكلات المحتوى وعوامل تحسين محركات البحث بشكل تلقائي.'}
               </p>
               <a
-                href='#pricing'
+                href={f(0).link.href}
                 className='group inline-flex items-center gap-2 mt-7 text-primary-700 font-extrabold text-lg border-b-2 border-primary pb-1'
               >
-                اكتشف كيف يعمل الفحص
+                {f(0).link.label}
                 <svg
                   width='20'
                   height='20'
@@ -220,21 +248,18 @@ export function UseCasesSection() {
           </div>
           <div className='feature-block relative z-10 flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16'>
             <div className='lg:w-1/2' data-anim='slide' data-from='left'>
-              <div className='eyebrow mb-5'>
-                الميزة 02 — الذكاء الاصطناعي
-              </div>
+              <div className='eyebrow mb-5'>{f(1).eyebrow}</div>
               <h3 className='text-2xl sm:text-3xl lg:text-[2.2rem] font-extrabold leading-[1.3] text-ink'>
-                اقتراحات ذكية جاهزة للتطبيق
+                {f(1).title || 'اقتراحات ذكية جاهزة للتطبيق'}
               </h3>
               <p className='mt-5 text-lg text-[#4a5a4c] leading-relaxed'>
-                يقوم الذكاء الاصطناعي بإنشاء عناوين ووصف ميتا ومخططات منظمة
-                وأسئلة شائعة تساعد على تحسين ظهور موقعك في نتائج البحث.
+                {f(1).desc || 'يقوم الذكاء الاصطناعي بإنشاء عناوين ووصف ميتا ومخططات منظمة وأسئلة شائعة تساعد على تحسين ظهور موقعك في نتائج البحث.'}
               </p>
               <a
-                href='#pricing'
+                href={f(1).link.href}
                 className='group inline-flex items-center gap-2 mt-7 text-primary-700 font-extrabold text-lg border-b-2 border-primary pb-1'
               >
-                شاهد الاقتراحات
+                {f(1).link.label}
                 <svg
                   width='20'
                   height='20'
@@ -368,19 +393,18 @@ export function UseCasesSection() {
           </div>
           <div className='feature-block relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16'>
             <div className='lg:w-1/2' data-anim='slide' data-from='right'>
-              <div className='eyebrow mb-5'>الميزة 03 — التحكّم البشري</div>
+              <div className='eyebrow mb-5'>{f(2).eyebrow}</div>
               <h3 className='text-2xl sm:text-3xl lg:text-[2.2rem] font-extrabold leading-[1.3] text-ink'>
-                أنت من يقرر ما يتم تطبيقه
+                {f(2).title || 'أنت من يقرر ما يتم تطبيقه'}
               </h3>
               <p className='mt-5 text-lg text-[#4a5a4c] leading-relaxed'>
-                راجع جميع التوصيات المقترحة وعدّلها أو وافق عليها قبل
-                تنفيذها على موقعك.
+                {f(2).desc || 'راجع جميع التوصيات المقترحة وعدّلها أو وافق عليها قبل تنفيذها على موقعك.'}
               </p>
               <a
-                href='#pricing'
+                href={f(2).link.href}
                 className='group inline-flex items-center gap-2 mt-7 text-primary-700 font-extrabold text-lg border-b-2 border-primary pb-1'
               >
-                اعرف المزيد
+                {f(2).link.label}
                 <svg
                   width='20'
                   height='20'
@@ -514,21 +538,18 @@ export function UseCasesSection() {
           </div>
           <div className='feature-block relative z-10 flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-16'>
             <div className='lg:w-1/2' data-anim='slide' data-from='left'>
-              <div className='eyebrow mb-5'>
-                الميزة 04 — المراقبة والتقارير
-              </div>
+              <div className='eyebrow mb-5'>{f(3).eyebrow}</div>
               <h3 className='text-2xl sm:text-3xl lg:text-[2.2rem] font-extrabold leading-[1.3] text-ink'>
-                مراقبة مستمرة وتحسين دائم
+                {f(3).title || 'مراقبة مستمرة وتحسين دائم'}
               </h3>
               <p className='mt-5 text-lg text-[#4a5a4c] leading-relaxed'>
-                تابع أداء موقعك واكتشف الصفحات المعطلة ومشكلات SEO الجديدة
-                من خلال تقارير ولوحات تحكم متقدمة.
+                {f(3).desc || 'تابع أداء موقعك واكتشف الصفحات المعطلة ومشكلات SEO الجديدة من خلال تقارير ولوحات تحكم متقدمة.'}
               </p>
               <a
-                href='#stats'
+                href={f(3).link.href}
                 className='group inline-flex items-center gap-2 mt-7 text-primary-700 font-extrabold text-lg border-b-2 border-primary pb-1'
               >
-                استكشف التقارير
+                {f(3).link.label}
                 <svg
                   width='20'
                   height='20'

@@ -1,36 +1,10 @@
-export function FaqSection() {
-  const faqs = [
-    {
-      question: 'كيف تعمل المنصة بالضبط؟',
-      answer:
-        'تضيف موقعك، فتفحص هوية الصفحات تلقائيا وتكشف مشاكل SEO، ثم تقترح تحسينات جاهزة بالذكاء الاصطناعي يمكنك مراجعتها واعتمادها مباشرة.',
-    },
-    {
-      question: 'هل أحتاج إلى خبرة تقنية أو في SEO؟',
-      answer:
-        'لا. صممت المنصة لتكون بسيطة للجميع، فالذكاء الاصطناعي يتولى التحليل والاقتراحات بينما تراجع أنت النتائج وتوافق عليها بنقرة واحدة.',
-    },
-    {
-      question: 'ما المنصات التي تدعمها هوية؟',
-      answer:
-        'ندعم WordPress وShopify وسلة وزد، مع إضافة تكاملات جديدة باستمرار حتى تتمكن من ربط موقعك وتطبيق التحسينات بسرعة.',
-    },
-    {
-      question: 'هل بياناتي وموقعي في أمان؟',
-      answer:
-        'نعم. نستخدم اتصالات مشفرة ولا نطبق أي تغيير دون موافقتك الصريحة، وتبقى دائما المتحكم الكامل في كل تعديل يتم على موقعك.',
-    },
-    {
-      question: 'كيف تتم المراقبة المستمرة للـ SEO؟',
-      answer:
-        'تفحص المنصة موقعك بشكل دوري، وتكتشف المشاكل الجديدة وصفحات 404 فور ظهورها، ثم ترسل تنبيهات واقتراحات إصلاح وتقارير تاريخية.',
-    },
-    {
-      question: 'هل يمكنني تغيير الباقة أو الإلغاء في أي وقت؟',
-      answer:
-        'بالتأكيد. يمكنك الترقية أو التخفيض أو الإلغاء في أي وقت دون عقود ملزمة، وتدفع فقط عندما تكون جاهزا للنمو.',
-    },
-  ];
+import { apiFetch } from '@/lib/api';
+import type { Faq } from '@/types/api';
+
+export async function FaqSection() {
+  const faqs = await apiFetch<Faq[]>('/api/v1/faqs?lang=ar');
+  const items = faqs?.[0]?.items ?? [];
+  const stats = faqs?.[0]?.statistics;
 
   return (
     <section id='faq' className='bg-pattern relative overflow-hidden py-14 lg:py-20'>
@@ -71,21 +45,30 @@ export function FaqSection() {
               </div>
 
               <div className='mt-7 grid grid-cols-2 gap-3'>
-                <div className='rounded-2xl border border-[#eef1ea] bg-white p-4 text-center'>
-                  <div className='text-2xl font-extrabold text-primary-700'>24/7</div>
-                  <div className='mt-1 text-xs font-bold text-[#9aa49a]'>دعم فوري</div>
-                </div>
-                <div className='rounded-2xl border border-[#eef1ea] bg-white p-4 text-center'>
-                  <div className='text-2xl font-extrabold text-ink'>&lt; ٢ د</div>
-                  <div className='mt-1 text-xs font-bold text-[#9aa49a]'>متوسط الرد</div>
-                </div>
+                {stats?.items?.slice(0, 2).map((item, i) => (
+                  <div key={i} className='rounded-2xl border border-[#eef1ea] bg-white p-4 text-center'>
+                    <div className='text-2xl font-extrabold text-primary-700'>{item.number}</div>
+                    <div className='mt-1 text-xs font-bold text-[#9aa49a]'>{item.label}</div>
+                  </div>
+                )) ?? (
+                  <>
+                    <div className='rounded-2xl border border-[#eef1ea] bg-white p-4 text-center'>
+                      <div className='text-2xl font-extrabold text-primary-700'>24/7</div>
+                      <div className='mt-1 text-xs font-bold text-[#9aa49a]'>دعم فوري</div>
+                    </div>
+                    <div className='rounded-2xl border border-[#eef1ea] bg-white p-4 text-center'>
+                      <div className='text-2xl font-extrabold text-ink'>&lt; ٢ د</div>
+                      <div className='mt-1 text-xs font-bold text-[#9aa49a]'>متوسط الرد</div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
 
           <div className='space-y-4 order-1 lg:order-2' id='faq-list' dir='rtl'>
-            {faqs.map((faq) => (
-              <div className='faq-item surface pattern-card overflow-hidden' data-anim='fade-up' key={faq.question}>
+            {items.map((faq, i) => (
+              <div className='faq-item surface pattern-card overflow-hidden' data-anim='fade-up' key={i}>
                 <button className='faq-head w-full flex items-center gap-4 text-right px-6 py-5'>
                   <span className='text-lg font-extrabold text-ink flex-1'>{faq.question}</span>
                   <span className='faq-icon w-9 h-9 shrink-0 rounded-full bg-[#f3f6ec] text-primary-700 flex items-center justify-center text-xl font-bold'>
@@ -93,7 +76,10 @@ export function FaqSection() {
                   </span>
                 </button>
                 <div className='faq-body'>
-                  <p className='px-6 pb-6 text-[#4a5a4c] leading-relaxed'>{faq.answer}</p>
+                  <div
+                    className='px-6 pb-6 text-[#4a5a4c] leading-relaxed'
+                    dangerouslySetInnerHTML={{ __html: faq.answer }}
+                  />
                 </div>
               </div>
             ))}

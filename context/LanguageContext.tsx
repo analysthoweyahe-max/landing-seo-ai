@@ -38,7 +38,14 @@ function readResource(language: Language, key: TranslationKey) {
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => readStoredLanguage());
+  const [language, setLanguageState] = useState<Language>(defaultLanguage);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (isLanguage(stored) && stored !== defaultLanguage) {
+      setLanguageState(stored);
+    }
+  }, []);
 
   const setLanguage = useCallback((nextLanguage: Language) => {
     setLanguageState(nextLanguage);
