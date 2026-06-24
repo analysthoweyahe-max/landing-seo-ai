@@ -24,8 +24,8 @@ export async function UseCasesSection() {
 
   const f = (i: number) => ({
     eyebrow: FEATURE_EYEBROWS[i] ?? `الميزة 0${i + 1}`,
-    title:   features[i]?.title       ?? '',
-    desc:    features[i]?.description ?? '',
+    title:   features[i]?.title       ? stripHtml(features[i].title)       : '',
+    desc:    features[i]?.description ? stripHtml(features[i].description) : '',
     link:    FEATURE_LINKS[i] ?? { href: '#pricing', label: 'اعرف المزيد' },
   });
 
@@ -112,9 +112,11 @@ export async function UseCasesSection() {
           <div className='feature-block relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-16'>
             <div className='lg:w-1/2' data-anim='slide' data-from='right'>
               <div className='eyebrow mb-5'>{f(0).eyebrow}</div>
-              <h3 className='text-2xl sm:text-3xl lg:text-[2.2rem] font-extrabold leading-[1.3] text-ink'>
-                {f(0).title || 'فحص شامل لموقعك خلال دقائق'}
-              </h3>
+              {f(0).title && (
+                <h3 className='text-2xl sm:text-3xl lg:text-[2.2rem] font-extrabold leading-[1.3] text-ink'>
+                  {f(0).title}
+                </h3>
+              )}
               <p className='mt-5 text-lg text-[#4a5a4c] leading-relaxed'>
                 {f(0).desc || 'يقوم النظام بفحص جميع صفحات الموقع واكتشاف المشكلات التقنية ومشكلات المحتوى وعوامل تحسين محركات البحث بشكل تلقائي.'}
               </p>
